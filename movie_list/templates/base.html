@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie List</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body style="background-color: rgb(118, 124, 212)">
+    <h1 class="h1 text-center">Movie List</h1>
+    <div style="display: flex; justify-content: center">
+      <div class="jumbotron" style="height: 300px; width: 700px">
+        <div style="margin-left: 10px">
+          <form action="/add" method="post" class="form-group">
+            <label for="title">Movie : </label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter Movie name"
+              name="title"
+              style="height: 40px; width: 300px"
+            />
+            <br />
+            <label for="rating">Rating : </label>
+            <input type="text" name="rating" id="rating" />
+            <br />
+            <button
+              type="submit"
+              class="btn btn-success"
+              style="margin-top: 10px"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <br />
+      <br />
+    </div>
+    <div style="display: flex; justify-content: center">
+      <ul class="list-group">
+        {% for movie in movie_list %}
+        <div style="margin-bottom: 10px">
+          <li class="list-group-item" style="margin-bottom: 10px">
+            {{ movie.id }} : {{ movie.title }} <br />
+            Rating : {{ movie.rating }}
+          </li>
+
+          <a
+            href="/delete/{{ movie.id }}"
+            class="btn btn-danger"
+            style="width: 80px; height: 40px; margin-left: 10px"
+            >Delete</a
+          >
+        </div>
+        {% endfor %}
+      </ul>
+    </div>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
